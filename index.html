@@ -25,7 +25,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body onload = "removeSpaces(); removeSpaces2();">
+<body onload = "removeSpaces(); translateToEnglish();">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -44,7 +44,6 @@
         </div>
     </nav>
 
-    <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6 portfolio-item">
@@ -54,8 +53,8 @@
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
-                <label for="out"><font size="4" color="#000000">Emoji:</font></label>
-                <div class="panel panel-default" id="wooloo">    
+                <label><font size="4" color="#000000">Emoji:</font></label>
+                <div class="panel panel-default" id="wooloo">
                     <div class="panel-body" style="min-height: 40;">
                         <div id = "wow">
                         </div>
@@ -68,22 +67,18 @@
         <div class="row">
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                    <label for="comment2"><font size="4" color="#000000">Emoji:</font></label>
-                    <textarea class="form-control" rows="5" id="comment2" onchange="removeSpaces()"></textarea>
+                    <label for="emoji-in"><font size="4" color="#000000">Emoji:</font></label>
+                    <textarea class="form-control" rows="5" id="emoji-in" onchange="translateToEnglish()"></textarea>
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
-                <label for="out2"><font size="4" color="#000000">English:</font></label>
-                <div class="panel panel-default" id="wooloo2">    
-                    <div class="panel-body" style="min-height: 40;">
-                        <div id = "wow2">
-                        </div>
-                    </div>
+                <div class="form-group">
+                <label for ="eng-out"><font size="4" color="#000000">English:</font></label>
+                <textarea class="form-control" rows="5" id="eng-out"></textarea>
                 </div>
             </div>
         </div>
-         
-        </body>
+
         <hr>
 
         <footer>
@@ -96,6 +91,6 @@
 
     </div>
 
-    
+
 </body>
 </html>

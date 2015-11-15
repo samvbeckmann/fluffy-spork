@@ -5,8 +5,11 @@
  * in Fluffy-Spork.
  */
 
-function translateToEnglish(str) {
-    return constructEnglish(preprocess(str));
+function translateToEnglish() {
+    var str = document.getElementById('emoji-in').value;
+    $('#eng-out').val(constructEnglish(preprocess(str), str));
+
+    setTimeout(translateToEnglish, 500);
 }
 
 function preprocess(str) {
@@ -19,7 +22,7 @@ function constructEnglish(emojiList, str) {
     var result = getBeginning(getPseudoRandom(str, 3));
     for (var i = 0; i < emojiList.length; i++) {
         result += englishFormat(emojiList[i]);
-        result += getCommaWithChance(getPseudoRandom(str, 10));
+        result += getCommaWithChance(getPseudoRandom(emojiList[i], 10));
     }
     result += getEnding(getPseudoRandom(str, 3));
     return result;
@@ -51,7 +54,7 @@ function getEnding(number) {
 }
 
 function englishFormat(str) {
-    return ' ' + str.replace('_', ' ');
+    return ' ' + str.replace(/_/g, ' ');
 }
 
 function getPseudoRandom(str, max) {
