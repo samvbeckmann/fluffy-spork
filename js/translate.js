@@ -1038,7 +1038,7 @@ function createFormattedEmoji(emojiNum, type) {
     }
     else {
         emojiNum = formatForDisplayRules(emojiNum);
-        return ':' + emoji[emojiNum] + ':';
+        return ':' + emoji[emojiNum].replace(/ /g, '_') + ':';
     }
 }
 
