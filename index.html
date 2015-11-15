@@ -28,13 +28,8 @@
 <body onload = "removeSpaces(); translateToEnglish();">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
+            <br>
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <font color="#8c8c8c" size="5">Fluffy-Spork | </font><font color="#cccccc" size="5">Text to Emoji Translator<font></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,32 +43,32 @@
         <div class="row">
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                    <label for="comment"><font size="4" color="#000000">English:</font></label>
+                    <label for="comment"><font size="4" color="#222222">English:</font></label>
                     <textarea class="form-control" rows="5" id="comment" onchange="removeSpaces()"></textarea>
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
-                <label><font size="4" color="#000000">Emoji:</font></label>
-                <div class="panel panel-default" id="wooloo">
+                <label for="out"><font size="4" color="#222222">Emoji:</font></label>
+                <div class="panel panel-default" id="wooloo">    
                     <div class="panel-body" style="min-height: 40;">
                         <div id = "wow">
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" onclick="copyStuff()" class="btn btn-default">Copy Emojis to Clipboard</button>
-            <hr>
+            <button type="button" onclick="copyStuff()" class="btn btn-default center-block">Copy Emojis to Clipboard</button>
+            <hr><br>
         </div>
         <div class="row">
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                    <label for="emoji-in"><font size="4" color="#000000">Emoji:</font></label>
-                    <textarea class="form-control" rows="5" id="emoji-in" onchange="translateToEnglish()"></textarea>
+                    <label for="comment2"><font size="4" color="#222222">Emoji:</font></label>
+                    <textarea class="form-control" rows="5" id="comment2" onchange="removeSpaces()"></textarea>
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                <label for ="eng-out"><font size="4" color="#000000">English:</font></label>
+                <label for ="eng-out"><font size="4" color="#222222">English:</font></label>
                 <textarea class="form-control" rows="5" id="eng-out"></textarea>
                 </div>
             </div>
