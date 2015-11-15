@@ -1149,3 +1149,8 @@ function copyStuff()
     alert("Copy and paste: \n" + st);
     return st;
 }
+
+function buttonForSam()
+{
+    alert("doot")
+}
