@@ -5,26 +5,35 @@
  * in Fluffy-Spork.
  */
 
-function translateToEnglish(str){
+function translateToEnglish(str) {
     return constructEnglish(preprocess(str));
 }
 
-function preprocess(str){
+function preprocess(str) {
     str = str.replace(/ /g, '');
     str = str.substring(1, str.length - 1);
     return str.split('::');
 }
 
-function constructEnglish(emojiList, str){
+function constructEnglish(emojiList, str) {
     var result = getBeginning(getPseudoRandom(str, 3));
-    for (var i = 0; i < emojiList.length; i++)
+    for (var i = 0; i < emojiList.length; i++) {
         result += englishFormat(emojiList[i]);
+        result += getCommaWithChance(getPseudoRandom(str, 10));
+    }
     result += getEnding(getPseudoRandom(str, 3));
     return result;
 }
 
-function getBeginning(number){
-    switch (number){
+function getCommaWithChance(num){
+    if (num == 0)
+        return ',';
+    else
+        return '';
+}
+
+function getBeginning(number) {
+    switch (number) {
         case 0:
             return 'A';
         case 1:
@@ -34,14 +43,14 @@ function getBeginning(number){
     }
 }
 
-function getEnding(number){
+function getEnding(number) {
     if (number == 0)
         return '.';
     else
         return '!';
 }
 
-function englishFormat(str){
+function englishFormat(str) {
     return ' ' + str.replace('_', ' ');
 }
 

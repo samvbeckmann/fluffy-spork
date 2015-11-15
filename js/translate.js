@@ -1138,14 +1138,14 @@ function copyStuff()
 {
     var st = getClipboardStr(document.getElementById('comment').value);
 
-    var listOfThangs = st.split(",", st.length - 1);
-
-    st = '';
-
-    for(var x = 0; x < listOfThangs.length - 1; x++)
-    {
-        st += ":" + listOfThangs[x] + ": ";
-    }
+    //var listOfThangs = st.split(",", st.length - 1);
+    //
+    //st = '';
+    //
+    //for(var x = 0; x < listOfThangs.length - 1; x++)
+    //{
+    //    st += ":" + listOfThangs[x] + ": ";
+    //}
     alert("Copy and paste: \n" + st);
     return st;
 }
