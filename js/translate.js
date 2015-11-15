@@ -116,6 +116,7 @@ var stopWords = [
 ];
 
 var emoji = [
+    "!",
     "diamond shape with a dot inside",
     "notebook with decorative cover",
     "first quarter moon with face",
@@ -1027,13 +1028,17 @@ function createFormattedEmoji(emojiNum, type) {
 }
 
 function formatForDisplayRules(emojiNum) {
-    if (emojiNum == 870)
+    if (emoji[emojiNum] == '+1')
         emojiNum++;
+    else if (emoji[emojiNum] == '!')
+        emojiNum = emoji.indexOf('exclamation');
 
     return emojiNum;
 }
 
 function formatForOutputRules(emojiNum) {
+    if (emoji[emojiNum] == '!')
+        emojiNum = emoji.indexOf('exclamation');
     return emojiNum;
 }
 
