@@ -1,5 +1,5 @@
 # Fluffy-Spork
-A text to emoji conversion tool.
+[A text to emoji conversion tool.](http://samvbeckmann.github.com/fluffy-spork)  
 :octocat:
 
 ## Contributing
