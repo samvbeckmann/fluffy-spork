@@ -178,7 +178,7 @@ var emoji = [
     "small blue diamond",
     "large blue diamond",
     "white large square",
-    "black large square",
+    "black square",
     "white small square",
     "black small square",
     "information source",
