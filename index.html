@@ -24,7 +24,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body onload = removeSpaces()>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -46,11 +46,10 @@
     <body>
     <div class="container">
         <div class="row">
-            
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
                     <label for="comment"><font size="4" color="#000000">English:</font></label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment" onchange="removeSpaces()"></textarea>
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
@@ -63,7 +62,7 @@
                 </div>
             </div>
         </div>
-         <button type="btn" class="btn btn-default" onclick="removeSpaces()"><font color="#262626">Translate</font></button> 
+
          
         </body>
         <hr>
