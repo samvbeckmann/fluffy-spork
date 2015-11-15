@@ -1017,13 +1017,20 @@ function recurseTranslate(str, type) {
     for (var j = 0; j < emoji.length; j++) {
         var place = str.indexOf(emoji[j]);
         if (place > -1) {
+            if (isOperator(j))
+            {
+                return recurseTranslate(str.substring(0, place), type)
+                    + createFormattedEmoji(j, type)
+                    + recurseTranslate(str.substring(findNextSpace(str, place + emoji[j].length)), type);
+            }
             return recurseTranslate(str.substring(0, findLastSpace(str, place)), type)
                 + createFormattedEmoji(j, type)
                 + recurseTranslate(str.substring(findNextSpace(str, place + emoji[j].length)), type);
         }
     }
 
-    if (removeStopwords(str).length > 0) {
+    str = removeStopwords(str);
+    if (str.length > 0) {
         var words = str.split(' ');
         str = '';
         for (var i = 0; i < words.length; i++) {
@@ -1031,6 +1038,11 @@ function recurseTranslate(str, type) {
         }
     }
     return str;
+}
+
+function isOperator(emojiNum)
+{
+    return emojiNum < 4;
 }
 
 function createFormattedEmoji(emojiNum, type) {
