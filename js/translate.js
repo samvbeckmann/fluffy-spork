@@ -971,7 +971,7 @@ var emoji = [
     "cl",
     "wc",
     "sa",
-    "ng",
+    //"ng",
     "up",
     "ok",
     "de",
