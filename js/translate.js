@@ -1051,6 +1051,8 @@ function findNextSpace(str, place) {
 }
 
 function getRandomEmoji(word) {
+    if (word == '')
+        return '';
     var sum = 0;
     for (var i = 0; i < word.length; i++)
         sum += word.charCodeAt(i);
@@ -1058,7 +1060,7 @@ function getRandomEmoji(word) {
 }
 
 /* Test run code. TODO: Remove when working */
-console.log(translate(''));
+console.log(translate('this is a lot of words here that might cause the error i want to find.'));
 
 function removeSpaces()
 {
