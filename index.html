@@ -18,13 +18,14 @@
     <script src="main.js"></script>
     <script src="text/javascript" href="./js/emoji.js"></script>
     <script src="js/translate.js"></script>
+    <script src="js/reverse.js"></script>
 
     <script src="js/jquery.js"></script>
     <script src="clipboard.js-master/dist/clipboard.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body onload = removeSpaces()>
+<body onload = "removeSpaces(); removeSpaces2();">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -61,8 +62,26 @@
                     </div>
                 </div>
             </div>
+            <button type="button" onclick="buttonForSam()" class="btn btn-default">Default</button>
+            <hr>
         </div>
-
+        <div class="row">
+            <div class="col-md-6 portfolio-item">
+                <div class="form-group">
+                    <label for="comment2"><font size="4" color="#000000">English:</font></label>
+                    <textarea class="form-control" rows="5" id="comment2" onchange="removeSpaces()"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6 portfolio-item">
+                <label for="out2"><font size="4" color="#000000">Emoji:</font></label>
+                <div class="panel panel-default" id="wooloo2">    
+                    <div class="panel-body" style="min-height: 40;">
+                        <div id = "wow2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
          
         </body>
         <hr>
