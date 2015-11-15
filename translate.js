@@ -997,18 +997,17 @@ var emoji = [
 function recurseTranslate(str) {
     for (var j = 0; j < emoji.length; j++) {
         var place = str.indexOf(emoji[j]);
-        if (place > -1)
-        {
+        if (place > -1) {
             return recurseTranslate(str.substring(0, findLastSpace(str, place)))
                 + createFormattedEmoji(j)
                 + recurseTranslate(str.substring(findNextSpace(str, place + emoji[j].length)));
         }
     }
+
     if (str.length > 0) {
         var words = str.split(' ');
         str = '';
-        for (var i = 0; i < words.length; i++)
-        {
+        for (var i = 0; i < words.length; i++) {
             str += getRandomEmoji(words[i]);
         }
     }
@@ -1016,20 +1015,16 @@ function recurseTranslate(str) {
 
 }
 
-function createFormattedEmoji(emojiNum)
-{
+function createFormattedEmoji(emojiNum) {
     return emoji[emojiNum].replace(/ /g, '_') + ',';
 }
 
-function translate(str)
-{
+function translate(str) {
     return recurseTranslate(removeStopwords(str.toLowerCase()));
 }
 
-function removeStopwords(str)
-{
-    for (var i = 0; i < stopWords.length; i++)
-    {
+function removeStopwords(str) {
+    for (var i = 0; i < stopWords.length; i++) {
         str = str.replace(new RegExp("\\b" + stopWords[i] + "\\b", "g"), ' ');
     }
     return str.trim();
@@ -1042,18 +1037,16 @@ function findLastSpace(str, place) {
         return findLastSpace(str, place - 1);
 }
 
-function findNextSpace(str, place)
-{
-    if (place >= str.length -1|| str.charAt(place) == ' ' || str.charAt(place) == '.')
+function findNextSpace(str, place) {
+    if (place >= str.length - 1 || str.charAt(place) == ' ' || str.charAt(place) == '.')
         return place + 1;
     else
         return findNextSpace(str, place + 1);
 }
 
-function getRandomEmoji(word)
-{
+function getRandomEmoji(word) {
     var sum = 0;
-    for(var i = 0; i < word.length; i++)
+    for (var i = 0; i < word.length; i++)
         sum += word.charCodeAt(i);
     return createFormattedEmoji(sum % emoji.length);
 }
