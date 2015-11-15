@@ -1032,6 +1032,8 @@ function formatForDisplayRules(emojiNum) {
         emojiNum++;
     else if (emoji[emojiNum] == '!')
         emojiNum = emoji.indexOf('exclamation');
+    else if (emoji[emojiNum] == "!?")
+        emojiNum = emoji.indexOf('interrobang');
 
     return emojiNum;
 }
@@ -1039,6 +1041,9 @@ function formatForDisplayRules(emojiNum) {
 function formatForOutputRules(emojiNum) {
     if (emoji[emojiNum] == '!')
         emojiNum = emoji.indexOf('exclamation');
+    else if (emoji[emojiNum] == "!?")
+        emojiNum = emoji.indexOf('interrobang');
+
     return emojiNum;
 }
 
@@ -1120,9 +1125,18 @@ function removeSpaces() {
 removeSpaces();
 
 
-new Clipboard('.btn');
-
 function copyStuff()
 {
+    var st = getClipboardStr(document.getElementById('comment').value);
 
+    var listOfThangs = st.split(",", st.length - 1);
+
+    st = ''
+
+    for(var x = 0; x < listOfThangs.length - 1; x++)
+    {
+        st += ":" + listOfThangs[x] + ": "
+    }
+    alert("Copy and paste: \n" + st)
+    return st
 }
