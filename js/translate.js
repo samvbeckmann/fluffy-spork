@@ -1020,7 +1020,7 @@ function createFormattedEmoji(emojiNum) {
 }
 
 function translate(str) {
-    var result = recurseTranslate(removeStopwords(str.toLowerCase()));
+    var result = recurseTranslate(removeStopwords(str.toLowerCase()).replace(new RegExp("\n", "g"), "  "));
     if (result.length == 0)
         result = getRandomEmoji(str);
     if (str.length == 0)
@@ -1060,7 +1060,7 @@ function getRandomEmoji(word) {
 }
 
 /* Test run code. TODO: Remove when working */
-console.log(translate('this is a lot of words here that might cause the error i want to find.'));
+console.log(translate('one\ntwo\nthree\nfour'));
 
 function removeSpaces()
 {
