@@ -1,4 +1,5 @@
 var stopWords = [
+    'a',
     'able',
     'about',
     'across',
@@ -986,6 +987,7 @@ var emoji = [
     "fu",
     "-1",
     "+1",
+    "plus1",
     "o",
     "x",
     "b",
@@ -994,13 +996,13 @@ var emoji = [
     "v"
 ];
 
-function recurseTranslate(str) {
+function recurseTranslate(str, type) {
     for (var j = 0; j < emoji.length; j++) {
         var place = str.indexOf(emoji[j]);
         if (place > -1) {
-            return recurseTranslate(str.substring(0, findLastSpace(str, place)))
-                + createFormattedEmoji(j)
-                + recurseTranslate(str.substring(findNextSpace(str, place + emoji[j].length)));
+            return recurseTranslate(str.substring(0, findLastSpace(str, place)), type)
+                + createFormattedEmoji(j, type)
+                + recurseTranslate(str.substring(findNextSpace(str, place + emoji[j].length)), type);
         }
     }
 
@@ -1015,18 +1017,21 @@ function recurseTranslate(str) {
 
 }
 
-function createFormattedEmoji(emojiNum) {
-    return emoji[emojiNum].replace(/ /g, '_') + ',';
+function createFormattedEmoji(emojiNum, type) {
+    if (type == 0)
+    {
+        if (emojiNum == 870)
+            emojiNum ++;
+        return emoji[emojiNum].replace(/ /g, '_') + ',';
+    }
+    else
+        return ':' + emoji[emojiNum] + ':';
 }
 
-function formatClipboardEmoji(emoji) {
-    return ':' + emoji + ':';
-}
-
-function translate(str) {
-    var result = recurseTranslate(removeStopwords(str.toLowerCase()).replace(new RegExp("\n", "g"), "  "));
+function translate(str, type) {
+    var result = recurseTranslate(removeStopwords(str.toLowerCase()).replace(new RegExp("\n", "g"), "  "), type);
     if (result.length == 0)
-        result = getRandomEmoji(str);
+        result = getRandomEmoji(str, type);
     if (str.length == 0)
         result = "";
 
@@ -1054,31 +1059,27 @@ function findNextSpace(str, place) {
         return findNextSpace(str, place + 1);
 }
 
-function getRandomEmoji(word) {
+function getRandomEmoji(word, type) {
     if (word == '')
         return '';
     var sum = 0;
     for (var i = 0; i < word.length; i++)
         sum += word.charCodeAt(i);
-    return createFormattedEmoji(sum % emoji.length);
+    return createFormattedEmoji(sum % emoji.length, type);
 }
 
 function getClipboardStr(str) {
-    var emojis = str.split(',');
-    var result = '';
-    for(var i = 0; i < emojis.length; i++)
-        result += formatClipboardEmoji(emojis[i]);
-    return result;
+    return translate(str, 1)
 }
 
 /* Test run code. TODO: Remove when working */
-console.log(translate('one\ntwo\nthree\nfour'));
+console.log(translate('one\ntwo\nthree\nfour', 0));
 
 function removeSpaces()
 {
 
 
-    var darr = translate(document.getElementById('comment').value)
+    var darr = translate(document.getElementById('comment').value, 0)
 
 
     var listOfThangs = darr.split(",", darr.length - 1)
