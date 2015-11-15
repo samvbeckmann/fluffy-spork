@@ -889,7 +889,7 @@ var emoji = [
     "bear",
     "frog",
     "wolf",
-    "butt",
+    "cloud",
     "nose",
     "eyes",
     "kiss",
