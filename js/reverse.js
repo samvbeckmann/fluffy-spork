@@ -1,5 +1,8 @@
 /**
  * Created by Sam on 11/15/2015.
+ *
+ * Performs operations for emoji to english
+ * in Fluffy-Spork.
  */
 
 function translateToEnglish(str){

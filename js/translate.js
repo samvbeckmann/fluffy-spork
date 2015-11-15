@@ -997,7 +997,13 @@ var emoji = [
     //"v"
 ];
 
-
+/**
+ * Gets a pseudo-random number using a string as a seed.
+ *
+ * @param str String to be used for seed.
+ * @param max Max value returned is 1-max.
+ * @returns {number}
+ */
 function getPseudoRandom(str, max) {
     var sum = 0;
     for (var i = 0; i < str.length; i++)
@@ -1128,21 +1134,18 @@ function removeSpaces() {
 
 }
 
-removeSpaces();
-
-
 function copyStuff()
 {
     var st = getClipboardStr(document.getElementById('comment').value);
 
     var listOfThangs = st.split(",", st.length - 1);
 
-    st = ''
+    st = '';
 
     for(var x = 0; x < listOfThangs.length - 1; x++)
     {
-        st += ":" + listOfThangs[x] + ": "
+        st += ":" + listOfThangs[x] + ": ";
     }
-    alert("Copy and paste: \n" + st)
-    return st
+    alert("Copy and paste: \n" + st);
+    return st;
 }
