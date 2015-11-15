@@ -25,7 +25,9 @@ function constructEnglish(emojiList, str) {
     var result = getBeginning(getPseudoRandom(str, 3));
     for (var i = 0; i < emojiList.length; i++) {
         result += englishFormat(emojiList[i]);
-        result += getCommaWithChance(getPseudoRandom(emojiList[i], 10));
+        if (i < emojiList.length - 2) {
+            result += getCommaWithChance(getPseudoRandom(emojiList[i], 10));
+        }
     }
 
     result = result.replace(" exclamation", "!").replace(" question", "?").replace(" interrobang", "!?");
@@ -35,7 +37,7 @@ function constructEnglish(emojiList, str) {
     return result;
 }
 
-function getCommaWithChance(num){
+function getCommaWithChance(num) {
     if (num == 0)
         return ',';
     else
