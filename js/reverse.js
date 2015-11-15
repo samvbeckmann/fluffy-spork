@@ -61,7 +61,7 @@ function getPseudoRandom(str, max) {
     return Math.pow(sum, 2) % max;
 }
 
-unction removeSpaces2() {
+function removeSpaces2() {
 
 
     var darr = translate(document.getElementById('comment').value, 0);

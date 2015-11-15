@@ -1025,7 +1025,7 @@ function recurseTranslate(str, type) {
         var words = str.split(' ');
         str = '';
         for (var i = 0; i < words.length; i++) {
-            str += getRandomEmoji(words[i]);
+            str += getRandomEmoji(words[i], type);
         }
     }
     return str;
@@ -1134,23 +1134,10 @@ function removeSpaces() {
 
 }
 
-function copyStuff()
-{
-    var st = getClipboardStr(document.getElementById('comment').value);
-
-    //var listOfThangs = st.split(",", st.length - 1);
-    //
-    //st = '';
-    //
-    //for(var x = 0; x < listOfThangs.length - 1; x++)
-    //{
-    //    st += ":" + listOfThangs[x] + ": ";
-    //}
-    alert("Copy and paste: \n" + st);
-    return st;
-}
-
-function buttonForSam()
-{
-    alert("doot")
+function copyStuff() {
+    new Clipboard('.btn', {
+        text: function() {
+            return getClipboardStr(document.getElementById('comment').value)
+        }
+    });
 }
