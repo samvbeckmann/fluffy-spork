@@ -1079,8 +1079,9 @@ function removeSpaces()
         var wee = "http://www.emoji-cheat-sheet.com/graphics/emojis/" + listOfThangs[x] + ".png";
         var img = document.createElement("img");
         img.src = wee;
-        img.class = "img-responsive";
-    
+        img.height ="25";
+        img.width = "25";
+
 
         src.appendChild(img);
 
