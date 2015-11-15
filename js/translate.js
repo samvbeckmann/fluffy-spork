@@ -1019,6 +1019,10 @@ function createFormattedEmoji(emojiNum) {
     return emoji[emojiNum].replace(/ /g, '_') + ',';
 }
 
+function formatClipboardEmoji(emoji) {
+    return ':' + emoji + ':';
+}
+
 function translate(str) {
     var result = recurseTranslate(removeStopwords(str.toLowerCase()).replace(new RegExp("\n", "g"), "  "));
     if (result.length == 0)
@@ -1057,6 +1061,14 @@ function getRandomEmoji(word) {
     for (var i = 0; i < word.length; i++)
         sum += word.charCodeAt(i);
     return createFormattedEmoji(sum % emoji.length);
+}
+
+function getClipboardStr(str) {
+    var emojis = str.split(',');
+    var result = '';
+    for(var i = 0; i < emojis.length; i++)
+        result += formatClipboardEmoji(emojis[i]);
+    return result;
 }
 
 /* Test run code. TODO: Remove when working */
