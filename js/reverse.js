@@ -60,3 +60,30 @@ function getPseudoRandom(str, max) {
         sum += str.charCodeAt(i);
     return Math.pow(sum, 2) % max;
 }
+
+unction removeSpaces2() {
+
+
+    var darr = translate(document.getElementById('comment').value, 0);
+
+
+    var listOfThangs = darr.split(",", darr.length - 1);
+
+    var src = document.getElementById("wow");
+    src.innerHTML = '';
+
+    for (var x = 0; x < listOfThangs.length - 1; x++) {
+        var wee = "http://www.emoji-cheat-sheet.com/graphics/emojis/" + listOfThangs[x] + ".png";
+        var img = document.createElement("img");
+        img.src = wee;
+        img.height = "25";
+        img.width = "25";
+
+
+        src.appendChild(img);
+
+    }
+
+    setTimeout(removeSpaces2, 500);
+
+}
