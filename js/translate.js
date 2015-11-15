@@ -1104,3 +1104,11 @@ function removeSpaces()
 }
 
 removeSpaces();
+
+
+new Clipboard('.btn');
+
+function copyStuff()
+{
+
+}
