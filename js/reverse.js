@@ -7,7 +7,10 @@
 
 function translateToEnglish() {
     var str = document.getElementById('emoji-in').value;
-    $('#eng-out').val(constructEnglish(preprocess(str), str));
+    if (str.length == 0)
+        $('#eng-out').val('');
+    else
+        $('#eng-out').val(constructEnglish(preprocess(str), str));
 
     setTimeout(translateToEnglish, 500);
 }
