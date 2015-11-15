@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/2-col-portfolio.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="./css/emoji.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,6 +24,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="main.js"></script>
+    <script src="text/javascript" href="./js/emoji.js"></script>
 
 </head>
 
@@ -77,17 +78,20 @@
         <div class="row">
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                    <label for="comment">Comment:</label>
+                    <label for="comment">English:</label>
                     <textarea class="form-control" rows="5" id="comment"></textarea>
                 </div>
             </div>
             <div class="col-md-6 portfolio-item">
                 <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <label for="output">Emoji:</label>
+                    <textarea class="form-control" rows="5" id="output">
+                    </textarea>
                 </div>
             </div>
         </div>
+        <input id="clickMe" type="button" class="btn btn-primary"value="clickme" onclick="removeSpaces();"></button>
+
         <!-- /.row -->
 
         <!-- <hr> -->
