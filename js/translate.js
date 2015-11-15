@@ -1087,5 +1087,8 @@ function removeSpaces()
 
     }
 
+    setTimeout(removeSpaces, 500);
+
 }
 
+removeSpaces();
