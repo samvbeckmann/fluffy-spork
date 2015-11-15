@@ -1020,7 +1020,13 @@ function createFormattedEmoji(emojiNum) {
 }
 
 function translate(str) {
-    return recurseTranslate(removeStopwords(str.toLowerCase()));
+    var result = recurseTranslate(removeStopwords(str.toLowerCase()));
+    if (result.length == 0)
+        result = getRandomEmoji(str);
+    if (str.length == 0)
+        result = "";
+
+    return result;
 }
 
 function removeStopwords(str) {
@@ -1052,14 +1058,10 @@ function getRandomEmoji(word) {
 }
 
 /* Test run code. TODO: Remove when working */
-console.log(translate('the quick fox jumped over a lazy brown dog.'));
+console.log(translate(''));
 
 function removeSpaces()
 {
-    /*
-        var img = document.createElement("img");
-        img.src = "http://www.emoji-cheat-sheet.com/graphics/emojis/" + document.getElementById('comment').text + ".png";
-    */        
 
 
     var darr = translate(document.getElementById('comment').value)
