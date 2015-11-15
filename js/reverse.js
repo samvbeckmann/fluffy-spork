@@ -30,7 +30,7 @@ function constructEnglish(emojiList, str) {
         }
     }
 
-    result = result.replace(" exclamation", "!").replace(" question", "?").replace(" interrobang", "!?");
+    result = result.replace(new RegExp(",? exclamation", "g"), "!").replace(new RegExp(",? question", "g"), "?").replace(new RegExp(",? interrobang", "g"), "!?");
     if (result.charAt(result.length - 1) != "!" && result.charAt(result.length - 1) != "?") {
         result += getEnding(getPseudoRandom(str, 3));
     }
