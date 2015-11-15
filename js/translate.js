@@ -1023,7 +1023,7 @@ function recurseTranslate(str, type) {
         }
     }
 
-    if (str.length > 0) {
+    if (removeStopwords(str).length > 0) {
         var words = str.split(' ');
         str = '';
         for (var i = 0; i < words.length; i++) {
@@ -1073,7 +1073,7 @@ function preprocessTranslateStr(str) {
 }
 
 function translate(str, type) {
-    var result = recurseTranslate(removeStopwords(preprocessTranslateStr(str)), type);
+    var result = recurseTranslate(preprocessTranslateStr(str), type);
     if (result.length == 0)
         result = getRandomEmoji(str, type);
     if (str.length == 0)
