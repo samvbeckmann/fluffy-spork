@@ -1013,22 +1013,31 @@ function recurseTranslate(str, type) {
         }
     }
     return str;
-
 }
 
 function createFormattedEmoji(emojiNum, type) {
-    if (type == 0)
-    {
-        if (emojiNum == 870)
-            emojiNum ++;
+    if (type == 0 || type == null) {
+        emojiNum = formatForOutputRules(emojiNum);
         return emoji[emojiNum].replace(/ /g, '_') + ',';
     }
-    else
+    else {
+        emojiNum = formatForDisplayRules(emojiNum);
         return ':' + emoji[emojiNum] + ':';
+    }
 }
 
-function preprocessTranslateStr(str)
-{
+function formatForDisplayRules(emojiNum) {
+    if (emojiNum == 870)
+        emojiNum++;
+
+    return emojiNum;
+}
+
+function formatForOutputRules(emojiNum) {
+    return emojiNum;
+}
+
+function preprocessTranslateStr(str) {
     return str.toLowerCase().replace(new RegExp("\n", "g"), " ");
 }
 
