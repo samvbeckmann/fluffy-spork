@@ -1064,18 +1064,19 @@ function removeSpaces()
 
     var darr = translate(document.getElementById('comment').value)
 
-    var listOfThangs = darr.split(",", darr.length() - 1)
 
-    
-    for(var x = 0; x < listOfThangs.length; x++)
+    var listOfThangs = darr.split(",", darr.length - 1)
+
+    var src = document.getElementById("wow")
+    src.innerHTML = '';
+
+    for(var x = 0; x < listOfThangs.length - 1; x++)
     {
         var wee = "http://www.emoji-cheat-sheet.com/graphics/emojis/" + listOfThangs[x] + ".png";
-    
         var img = document.createElement("img");
         img.src = wee
     
-        var src = document.getElementById("wooloo")
-    
+
         src.appendChild(img)
 
     }
