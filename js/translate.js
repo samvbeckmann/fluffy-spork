@@ -116,6 +116,7 @@ var stopWords = [
 ];
 
 var emoji = [
+    "!?",
     "!",
     "diamond shape with a dot inside",
     "notebook with decorative cover",
@@ -1032,6 +1033,8 @@ function formatForDisplayRules(emojiNum) {
         emojiNum++;
     else if (emoji[emojiNum] == '!')
         emojiNum = emoji.indexOf('exclamation');
+    else if (emoji[emojiNum] == "!?")
+        emojiNum = emoji.indexOf('interrobang');
 
     return emojiNum;
 }
@@ -1039,6 +1042,9 @@ function formatForDisplayRules(emojiNum) {
 function formatForOutputRules(emojiNum) {
     if (emoji[emojiNum] == '!')
         emojiNum = emoji.indexOf('exclamation');
+    else if (emoji[emojiNum] == "!?")
+        emojiNum = emoji.indexOf('interrobang');
+
     return emojiNum;
 }
 
