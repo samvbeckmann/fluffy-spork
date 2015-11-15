@@ -1009,7 +1009,7 @@ function recurseTranslate(str) {
         str = '';
         for (var i = 0; i < words.length; i++)
         {
-            str += getRandomEmoji();
+            str += getRandomEmoji(words[i]);
         }
     }
     return str;
@@ -1018,7 +1018,7 @@ function recurseTranslate(str) {
 
 function createFormattedEmoji(emojiNum)
 {
-    return ':' + emoji[emojiNum].replace(/ /g, '_') + ':';
+    return emoji[emojiNum].replace(/ /g, '_') + ',';
 }
 
 function translate(str)
@@ -1050,14 +1050,13 @@ function findNextSpace(str, place)
         return findNextSpace(str, place + 1);
 }
 
-function getRandomEmoji()
+function getRandomEmoji(word)
 {
-    return createFormattedEmoji(getRandomIntInRange(emoji.length));
+    var sum = 0;
+    for(var i = 0; i < word.length; i++)
+        sum += word.charCodeAt(i);
+    return createFormattedEmoji(sum % emoji.length);
 }
 
-function getRandomIntInRange(int)
-{
-    return Math.floor(Math.random() * int);
-}
-
+/* Test run code. TODO: Remove when working */
 console.log(translate('the quick fox jumped over a lazy brown dog.'));
