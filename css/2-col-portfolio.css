@@ -13,11 +13,28 @@ body {
 }
 
 .jumbotron{
-    background-image: url(https://static.pexels.com/photos/792/wood-landscape-mountains-nature.jpg);
+    background-image: url(http://data.whicdn.com/images/48774696/large.jpg);
     background-size: cover;
     text-align: center;
     color: #222222;
 }
+
+.other {
+    background-color: #ffffff;
+    background-image: none;
+    text-align: left;
+    margin: 0px;
+}
+
+.page-header{
+    color: #222222;
+    text-align: center;
+}
+
+.btn{
+    background-color: #444444;
+}
+
 
 
 
