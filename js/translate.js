@@ -116,6 +116,7 @@ var stopWords = [
 ];
 
 var emoji = [
+    "!",
     "diamond shape with a dot inside",
     "notebook with decorative cover",
     "first quarter moon with face",
@@ -959,8 +960,8 @@ var emoji = [
     "sob",
     "cry",
     "tm",
-    "on",
-    "o2",
+    //"on"
+    //"o2",
     "ab",
     "vs",
     "id",
@@ -986,14 +987,13 @@ var emoji = [
     "ox",
     "fu",
     "-1",
-    "+1",
-    "plus1",
-    "o",
-    "x",
-    "b",
-    "a",
-    "m",
-    "v"
+    "plus1"
+    //"o",
+    //"x",
+    //"b",
+    //"a",
+    //"m",
+    //"v"
 ];
 
 function recurseTranslate(str, type) {
@@ -1014,22 +1014,40 @@ function recurseTranslate(str, type) {
         }
     }
     return str;
-
 }
 
 function createFormattedEmoji(emojiNum, type) {
-    if (type == 0)
-    {
-        if (emojiNum == 870)
-            emojiNum ++;
+    if (type == 0 || type == null) {
+        emojiNum = formatForOutputRules(emojiNum);
         return emoji[emojiNum].replace(/ /g, '_') + ',';
     }
-    else
+    else {
+        emojiNum = formatForDisplayRules(emojiNum);
         return ':' + emoji[emojiNum] + ':';
+    }
+}
+
+function formatForDisplayRules(emojiNum) {
+    if (emoji[emojiNum] == '+1')
+        emojiNum++;
+    else if (emoji[emojiNum] == '!')
+        emojiNum = emoji.indexOf('exclamation');
+
+    return emojiNum;
+}
+
+function formatForOutputRules(emojiNum) {
+    if (emoji[emojiNum] == '!')
+        emojiNum = emoji.indexOf('exclamation');
+    return emojiNum;
+}
+
+function preprocessTranslateStr(str) {
+    return str.toLowerCase().replace(new RegExp("\n", "g"), " ");
 }
 
 function translate(str, type) {
-    var result = recurseTranslate(removeStopwords(str.toLowerCase()).replace(new RegExp("\n", "g"), "  "), type);
+    var result = recurseTranslate(removeStopwords(preprocessTranslateStr(str)), type);
     if (result.length == 0)
         result = getRandomEmoji(str, type);
     if (str.length == 0)
@@ -1065,34 +1083,29 @@ function getRandomEmoji(word, type) {
     var sum = 0;
     for (var i = 0; i < word.length; i++)
         sum += word.charCodeAt(i);
-    return createFormattedEmoji(sum % emoji.length, type);
+    return createFormattedEmoji(Math.pow(sum, 2) % emoji.length, type);
 }
 
 function getClipboardStr(str) {
     return translate(str, 1)
 }
 
-/* Test run code. TODO: Remove when working */
-console.log(translate('one\ntwo\nthree\nfour', 0));
-
-function removeSpaces()
-{
+function removeSpaces() {
 
 
-    var darr = translate(document.getElementById('comment').value, 0)
+    var darr = translate(document.getElementById('comment').value, 0);
 
 
-    var listOfThangs = darr.split(",", darr.length - 1)
+    var listOfThangs = darr.split(",", darr.length - 1);
 
-    var src = document.getElementById("wow")
+    var src = document.getElementById("wow");
     src.innerHTML = '';
 
-    for(var x = 0; x < listOfThangs.length - 1; x++)
-    {
+    for (var x = 0; x < listOfThangs.length - 1; x++) {
         var wee = "http://www.emoji-cheat-sheet.com/graphics/emojis/" + listOfThangs[x] + ".png";
         var img = document.createElement("img");
         img.src = wee;
-        img.height ="25";
+        img.height = "25";
         img.width = "25";
 
 
