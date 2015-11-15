@@ -20,3 +20,6 @@ footer {
 	height: 125px;
 }
 
+.form-control {
+	resize: none;
+}
